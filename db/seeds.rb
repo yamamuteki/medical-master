@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'csv'
+ActiveRecord::Base.transaction do
+  CSV.foreach('db/y.csv', encoding: 'Shift_JIS') do |row|
+    Medicine.create code: row[2], name: row[4]
+    print '.'
+  end
+end
