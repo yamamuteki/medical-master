@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+  get 'diseases/index'
+
   get 'medicines/index'
 
   get 'welcome/index'
 
   resources :medicines, only: :index do
     get :autocomplete_medicine_name, on: :collection
+  end
+  
+  resources :diseases, only: :index do
+    get :autocomplete_disease_name, on: :collection
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
