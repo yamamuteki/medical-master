@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
+  resources :medicines, only: :index do
+    get :autocomplete_medicine_name, on: :collection
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
